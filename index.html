@@ -12,19 +12,37 @@
     <script src="http://ajax.cdnjs.com/ajax/libs/backbone.js/0.3.3/backbone-min.js"></script>
 
     <script>
-		(function ($) {
-		window.AppView = Backbone.View.extend({
-		  el: $("body"),
-		  events: {
-		    "click #add-friend":  "showPrompt",
-		  },
-		  showPrompt: function () {
-		    var friend_name = prompt("Who is your friend?");
-		  }
-		});
-		var appview = new AppView;
+        (function ($) {
+            Friend = Backbone.Model.extend({
+                //Create a model to hold friend atribute
+                name: null
+            });
+
+            Friends = Backbone.Collection.extend({
+                model: Friend
+            });
+
+            AppView = Backbone.View.extend({
+                el: $("body"),
+                initialize: function () {
+                    this.friends = new Friends( null, { view: this });
+                    this.friends.bind("add", this.addFriend);
+                },
+                events: {
+                    "click #add-friend":  "showPrompt",
+                },
+                showPrompt: function () {
+                    var friend_name = prompt("Who is your friend?");
+                    var friend_model = new Friend({ name: friend_name });
+                    //Add a new friend model to our friend collection
+                    this.friends.add( friend_model );
+                },
+                addFriend: function(model) {
+                    $("#friends-list").append("<li>" + model.get('name') + "</li>")
+                }
+            });
+            var appview = new AppView;
 		})(jQuery);
 	</script>
-
 </body>
 </html>
