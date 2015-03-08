@@ -1,0 +1,19 @@
+<script type="text/template" id="searchTemplate">
+	<input type="text" id="search_text"/>
+	<input type="button" id="search_button" value="searchButton"/>
+</script>
+
+<div id="search_containter"></div>
+
+<script type="text/javascript">
+	SearchView = Backbone.View.extend({
+		initalize: function(){
+			this.render();
+		},
+		render: function(){
+			var template = _.template($(searchTemplate).html());
+			this.$el.html(template);
+		}
+	});
+	var searchView = SearchView({ el: $("search_containter")});
+</script>
