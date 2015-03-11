@@ -34,19 +34,22 @@
                     this.friends.bind('remove', this.render);
                     this.render();
                 },
+
                 events: {
                     "click #add-friend":  "showPrompt",
-                    "click li": "removeFriend"
+                    "click span.delete": "remove"
 
                 },
+
                 showPrompt: function () {
                     var friend_name = prompt("Who is your friend?");
                     var friend_model = new Friend({ name: friend_name });
                     //Add a new friend model to our friend collection
                     this.friends.add( friend_model );
                 },
+
                 addFriend: function(model) {
-                    $("#friends-list").append("<li>" + model.get('name') + "</li>")
+                    $("#friends-list").append("<li>" + model.get('name') + "&nbsp; &nbsp; <span class='delete' style='cursor:pointer; color:red; font-family:sans-serif;'>[delete]</span> </li>");
                 },
 
                 removeFriend: function(event){
