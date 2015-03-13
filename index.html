@@ -27,18 +27,21 @@
                 model: Friend
             });
 
-            AppView = Backbone.View.extend({
+            //ItemView = Backbone.View.extend({
+                
+            // })
+
+            ListView = Backbone.View.extend({
                 initialize: function () {
                     this.friends = new Friends( null, { view: this });
                     this.friends.bind("add", this.addFriend);
-                    this.friends.bind('remove', this.render);
+                    // this.friends.bind("remove", this.render);
                     this.render();
                 },
 
                 events: {
                     "click #add-friend":  "showPrompt",
-                    "click span.delete": "remove"
-
+                    // "click span.delete": "remove"
                 },
 
                 showPrompt: function () {
@@ -52,27 +55,27 @@
                     $("#friends-list").append("<li>" + model.get('name') + "&nbsp; &nbsp; <span class='delete' style='cursor:pointer; color:red; font-family:sans-serif;'>[delete]</span> </li>");
                 },
 
-                removeFriend: function(event){
-                    var target = $(event.target)
-                    console.log(target);
-                    var name = target.html();
+                // removeFriend: function(event){
+                //     var target = $(event.target)
+                //     console.log(target);
+                //     var name = target.html();
 
-                    console.log(this.friends);
+                //     console.log(this.friends);
 
-                    var model = this.friends.where({'name': name});
-                    this.friends.remove(model);
+                //     var model = this.friends.where({'name': name});
+                //     this.friends.remove(model);
 
-                    console.log(this.friends)
-                },
+                //     console.log(this.friends)
+                // },
                 
                 render: function() {
-                    console.log(this);
+                    // console.log(this);
                     var addFriendTemplate = _.template( $("#addTemplate").html(), {});
-                    this.$el.html( addFriendTemplate );
+                    $(this.el).html( addFriendTemplate );
                 }
             });
 
-            var appview = new AppView({ el: $("#content") });
+            var listview = new ListView({ el: $("#content") });
 		})(jQuery);
 	</script>
 
