@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div.imageRed {
+	opacity: 1.0;
+	filter:alpha(opacity=100);
+	width: 500px;
+	height: 500px;
+	background-color: red;
+	margin: 10px;
+}
+
+div.imageGreen {
+	opacity: 1.0;
+	filter:alpha(opacity=100);
+	width: 500px;
+	height: 500px;
+	background-color: green;
+	margin: 10px;
+}
+
+div.imageBlue {
+	opacity: 1.0;
+	filter:alpha(opacity=100);
+	width: 500px;
+	height: 500px;
+	background-color: blue;
+	margin: 10px;
+}
+
+div.imagePurple {
+	opacity: 1.0;
+	filter:alpha(opacity=100);
+	width: 500px;
+	height: 500px;
+	background-color: purple;
+	margin: 10px;
+}
+
+div:hover {
+
+	background-color: white;
+	width: 500px;
+	height: 500px;
+	/*opacity: 0.5;*/
+	/*filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+</style>
+</head>
+
+<body>
+<div class="imageRed" id="something">
+  <div class="hover">
+  </div>
+</div>
+
+<div class="imageGreen" id="something">
+  <div class="hover">
+  </div>
+</div>
+
+<div class="imageBlue" id="something">
+  <div class="hover">
+  </div>
+</div>
+
+<div class="imagePurple" id="something">
+  <div class="hover">
+  </div>
+</div>
+
+<script>
+	var something = document.getElementById('something');
+
+	something.style.cursor = 'pointer';
+	something.onclick = function() {
+	    something.style.backgroundColor ="white";
+	};
+</script>
+</body>
+
+</html>
+
